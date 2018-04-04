@@ -119,10 +119,15 @@ static Sound_Play(client, const String:speech[], channel)
 					if (speech[0] && IsValidClient(client))
 						g_lastplay[client] = thetime + 1.5;
 					{
+					
+						if (CheckCommandAccess(client, "saysoundslle", ADMFLAG_CUSTOM1) || CheckCommandAccess(client, "saysoundslle", ADMFLAG_CUSTOM2))
+						{
+
 						Format(filelocationFake, sizeof(filelocationFake), "*%s", filelocation);
 						EmitSoundToAll(filelocationFake, SOUND_FROM_PLAYER, channel);
 						PrintToChatAll(" \x04[ChaoFan SoundTrig]\x01 %N played \x04%s\x01", client, speech);	
 						
+						}
 					}
 				}
 				else
